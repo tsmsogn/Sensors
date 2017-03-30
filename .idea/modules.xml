@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ESLibrary-Examples-Android-Studio.iml" filepath="$PROJECT_DIR$/ESLibrary-Examples-Android-Studio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensingWithAlarmsExample/sensingWithAlarmsExample.iml" filepath="$PROJECT_DIR$/sensingWithAlarmsExample/sensingWithAlarmsExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensingWithMediaCapture/sensingWithMediaCapture.iml" filepath="$PROJECT_DIR$/sensingWithMediaCapture/sensingWithMediaCapture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensingWithServiceSubscriptionsExample/sensingWithServiceSubscriptionsExample.iml" filepath="$PROJECT_DIR$/sensingWithServiceSubscriptionsExample/sensingWithServiceSubscriptionsExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorDataManager/sensorDataManager.iml" filepath="$PROJECT_DIR$/sensorDataManager/sensorDataManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorManager/sensorManager.iml" filepath="$PROJECT_DIR$/sensorManager/sensorManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorManagerBasicExample/sensorManagerBasicExample.iml" filepath="$PROJECT_DIR$/sensorManagerBasicExample/sensorManagerBasicExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorManagerExample/sensorManagerExample.iml" filepath="$PROJECT_DIR$/sensorManagerExample/sensorManagerExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sensorManagerLectureDemo/sensorManagerLectureDemo.iml" filepath="$PROJECT_DIR$/sensorManagerLectureDemo/sensorManagerLectureDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testingAPI19Subscription/testingAPI19Subscription.iml" filepath="$PROJECT_DIR$/testingAPI19Subscription/testingAPI19Subscription.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testingLogQuery/testingLogQuery.iml" filepath="$PROJECT_DIR$/testingLogQuery/testingLogQuery.iml" />
+    </modules>
+  </component>
+</project>
