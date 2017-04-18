@@ -8,16 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/sensingWithAlarmsExample" />
-            <option value="$PROJECT_DIR$/sensingWithMediaCapture" />
-            <option value="$PROJECT_DIR$/sensingWithServiceSubscriptionsExample" />
             <option value="$PROJECT_DIR$/sensorDataManager" />
             <option value="$PROJECT_DIR$/sensorManager" />
-            <option value="$PROJECT_DIR$/sensorManagerBasicExample" />
             <option value="$PROJECT_DIR$/sensorManagerExample" />
-            <option value="$PROJECT_DIR$/sensorManagerLectureDemo" />
-            <option value="$PROJECT_DIR$/testingAPI19Subscription" />
-            <option value="$PROJECT_DIR$/testingLogQuery" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
