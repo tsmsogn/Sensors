@@ -57,6 +57,15 @@
     <!-- Gyroscope -->
     <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="true" />
 
+    <!-- For data written to files -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-  -->
+
+    <!-- For any transfers -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- For async transfers -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".ApplicationContext"
         android:icon="@drawable/ic_launcher"

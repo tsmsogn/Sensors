@@ -21,10 +21,6 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 package com.ubhave.sensormanager.tester;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -37,13 +33,17 @@ import android.widget.Toast;
 
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public abstract class ExampleAbstractActivity extends Activity implements SensorDataUI
 {
 	public final static String SENSOR_TYPE_ID = "sensorTypeId";
 	protected final int UNSUBSCRIBED = 0;
 	protected final int SUBSCRIBED = 1;
 
-	protected ExampleSensorDataListener sensorDataListener;
+	protected MySensorDataListener sensorDataListener;
 	protected int selectedSensorType, currentStatus;
 
 	@Override
@@ -54,7 +54,7 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 		 * Instantiate the sensor data listener
 		 */
 		selectedSensorType = getIntent().getIntExtra(SENSOR_TYPE_ID, -1);
-		sensorDataListener = new ExampleSensorDataListener(selectedSensorType, this);
+		sensorDataListener = new MySensorDataListener(selectedSensorType, this);
 
 		/*
 		 * Create the user interface

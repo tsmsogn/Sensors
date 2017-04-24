@@ -41,10 +41,10 @@ public class ExampleSensorDataListener implements SensorDataListener
 	private final static String LOG_TAG = "SensorListener";
 	
 	private final int sensorType;
-	private final SensorDataUI userInterface;
+	protected final SensorDataUI userInterface;
 
 	private ESSensorManagerInterface sensorManager;
-	private final JSONFormatter formatter;
+	protected final JSONFormatter formatter;
 //	private final CSVFormatter formatter;
 	
 	private int sensorSubscriptionId;
