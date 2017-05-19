@@ -5,7 +5,7 @@ import com.ubhave.sensormanager.sensors.SensorUtils;
 
 public class SensorDataListenerUtils
 {
-	public static AbstractSensorDataListener getSensorDataListener(int id) throws Exception
+	public static AbstractSensorDataListener getSensorDataListener(int id) throws ESException
 	{
 		switch (id)
 		{
