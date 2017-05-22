@@ -63,4 +63,22 @@
         <item>@string/sms</item>
     </string-array>
 
+    <string name="ambienttemperature" />
+    <string name="light" />
+    <string name="pressure" />
+    <string name="humidity" />
+
+    <string-array name="environment_sensors_descriptions">
+		<item>@string/ambienttemperature</item>
+		<item>@string/light</item>
+		<item>@string/pressure</item>
+		<item>@string/humidity</item>
+    </string-array>
+
+    <string name="user" />
+
+    <string-array name="user_sensors_descriptions">
+        <item>@string/user</item>
+    </string-array>
+
 </resources>

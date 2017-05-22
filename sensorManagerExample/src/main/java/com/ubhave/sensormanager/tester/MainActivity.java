@@ -53,6 +53,22 @@ public class MainActivity extends TabActivity
 		pushSensors.setContent(pushSensorIntent);
 
 		tabHost.addTab(pushSensors);
+
+		TabSpec environmentSensors = tabHost.newTabSpec("Environment Sensors");
+		environmentSensors.setIndicator("Environment Sensors", null);
+		Intent environmentSensorIntent = new Intent(this, SensorListActivity.class);
+		environmentSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.ENVIRONMENT_SENSOR_TYPE);
+		environmentSensors.setContent(environmentSensorIntent);
+
+		tabHost.addTab(environmentSensors);
+		
+		TabSpec userSensors = tabHost.newTabSpec("User Sensors");
+		userSensors.setIndicator("User Sensors", null);
+		Intent userSensorIntent = new Intent(this, SensorListActivity.class);
+		userSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.USER_SENSOR_TYPE);
+		userSensors.setContent(userSensorIntent);
+
+		tabHost.addTab(userSensors);
 	}
 
 }
