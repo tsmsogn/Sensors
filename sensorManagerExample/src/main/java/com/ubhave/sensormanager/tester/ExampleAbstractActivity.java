@@ -31,7 +31,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.sensors.SensorUtils;
+import com.ubhave.sensormanager.tester.listeners.AbstractSensorDataListener;
+import com.ubhave.sensormanager.tester.listeners.SensorDataListenerUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,7 +46,7 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 	protected final int UNSUBSCRIBED = 0;
 	protected final int SUBSCRIBED = 1;
 
-	protected MySensorDataListener sensorDataListener;
+	protected AbstractSensorDataListener sensorDataListener;
 	protected int selectedSensorType, currentStatus;
 
 	@Override
@@ -54,7 +57,14 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 		 * Instantiate the sensor data listener
 		 */
 		selectedSensorType = getIntent().getIntExtra(SENSOR_TYPE_ID, -1);
-		sensorDataListener = new MySensorDataListener(selectedSensorType, this);
+		try
+		{
+			sensorDataListener = SensorDataListenerUtils.getSensorDataListener(selectedSensorType);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
 
 		/*
 		 * Create the user interface
