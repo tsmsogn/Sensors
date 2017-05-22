@@ -35,24 +35,24 @@ public class MainActivity extends TabActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		TabHost tabHost = getTabHost();
-		
-        TabSpec pullSensors = tabHost.newTabSpec("Pull Sensors");
-        pullSensors.setIndicator("Pull Sensors", null);
-        Intent pullSensorIntent = new Intent(this, SensorListActivity.class);
-        pullSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.PULL_SENSOR_TYPE);
-        pullSensors.setContent(pullSensorIntent);
- 
-        tabHost.addTab(pullSensors);
-        
-        TabSpec pushSensors = tabHost.newTabSpec("Push Sensors");
-        pushSensors.setIndicator("Push Sensors", null);
-        Intent pushSensorIntent = new Intent(this, SensorListActivity.class);
-        pushSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.PUSH_SENSOR_TYPE);
-        pushSensors.setContent(pushSensorIntent);
- 
-        tabHost.addTab(pushSensors);
+
+		TabSpec pullSensors = tabHost.newTabSpec("Pull Sensors");
+		pullSensors.setIndicator("Pull Sensors", null);
+		Intent pullSensorIntent = new Intent(this, SensorListActivity.class);
+		pullSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.PULL_SENSOR_TYPE);
+		pullSensors.setContent(pullSensorIntent);
+
+		tabHost.addTab(pullSensors);
+
+		TabSpec pushSensors = tabHost.newTabSpec("Push Sensors");
+		pushSensors.setIndicator("Push Sensors", null);
+		Intent pushSensorIntent = new Intent(this, SensorListActivity.class);
+		pushSensorIntent.putExtra(SensorListActivity.SENSOR_LIST_TYPE, SensorListActivity.PUSH_SENSOR_TYPE);
+		pushSensors.setContent(pushSensorIntent);
+
+		tabHost.addTab(pushSensors);
 	}
 
 }
