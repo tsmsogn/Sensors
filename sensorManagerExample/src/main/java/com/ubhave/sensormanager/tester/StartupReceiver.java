@@ -3,8 +3,11 @@ package com.ubhave.sensormanager.tester;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.sensors.SensorInterface;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.listeners.AbstractSensorDataListener;
@@ -19,20 +22,26 @@ public class StartupReceiver extends BroadcastReceiver
 	{
 		Log.d(TAG, "onReceive");
 
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
 		for (SensorInterface s : SensorUtils.getAllSensors(context.getApplicationContext()))
 		{
-			Log.d(TAG, "SensorUtils :"+s.getSensorType());
-
+			AbstractSensorDataListener sensorDataListener;
 			try
 			{
-				AbstractSensorDataListener sensorDataListener = SensorDataListenerUtils.getSensorDataListener(s.getSensorType());
-				// TODO
-				if (false && !sensorDataListener.isSubscribed())
+				sensorDataListener = SensorDataListenerUtils.getSensorDataListener(s.getSensorType());
+
+				String sensorName = SensorUtils.getSensorName(s.getSensorType());
+
+				boolean startSensing = prefs.getBoolean("pref_"+sensorName, false);
+
+				if (startSensing && !sensorDataListener.isSubscribed())
 				{
+					Log.d(TAG, "Start sensing:"+sensorName);
 					sensorDataListener.subscribeToSensorData();
 				}
 			}
-			catch (Exception e)
+			catch (ESException e)
 			{
 				e.printStackTrace();
 			}

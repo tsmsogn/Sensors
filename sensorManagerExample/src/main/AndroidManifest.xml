@@ -94,6 +94,7 @@
         <activity android:name=".pull.NonConfigurablePullSensorExampleActivity" />
         <activity android:name=".push.PushSensorExampleActivity" />
         <activity android:name=".pull.UpdateSensorConfigExampleActivity" />
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>
