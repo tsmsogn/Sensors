@@ -1,6 +1,6 @@
 [submodule "sensorManager"]
 	path = sensorManager
-	url = https://github.com/emotionsense/SensorManager.git
+	url = https://github.com/tsmsogn/SensorManager.git
 [submodule "sensorDataManager"]
 	path = sensorDataManager
 	url = https://github.com/tsmsogn/SensorDataManager.git
