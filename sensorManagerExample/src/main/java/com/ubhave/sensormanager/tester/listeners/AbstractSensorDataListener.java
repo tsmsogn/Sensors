@@ -17,7 +17,7 @@ import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
 import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedDatabase;
 
-public class AbstractSensorDataListener implements SensorDataListener
+public abstract class AbstractSensorDataListener implements SensorDataListener
 {
 	private final int sensorType;
 	private AbstractDataLogger logger = null;
@@ -28,7 +28,7 @@ public class AbstractSensorDataListener implements SensorDataListener
 	private int sensorSubscriptionId;
 	private boolean isSubscribed;
 
-	protected AbstractSensorDataListener(int sensorType)
+	public AbstractSensorDataListener(int sensorType)
 	{
 		this.sensorType = sensorType;
 		isSubscribed = false;
