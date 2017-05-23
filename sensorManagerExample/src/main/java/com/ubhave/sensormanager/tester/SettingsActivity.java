@@ -5,6 +5,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.support.v7.widget.Toolbar;
 
 import com.ubhave.sensormanager.sensors.SensorEnum;
 
@@ -14,6 +15,10 @@ public class SettingsActivity extends PreferenceActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_settings);
+
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setTitle(R.string.title_activity_settings);
 
 		// Create root preference screen
 		PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);
