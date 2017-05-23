@@ -55,6 +55,8 @@ public class SensorDataListenerUtils
 			return MagneticFieldSensorDataListener.getInstance();
 		case SensorUtils.SENSOR_TYPE_STEP_COUNTER:
 			return StepCounterSensorDataListener.getInstance();
+		case SensorUtils.SENSOR_TYPE_INTERACTION:
+			return InteractionSensorDataListener.getInstance();
 		default:
 			throw new ESException(ESException.UNKNOWN_SENSOR_TYPE, "Unknown sensor id: "+id);
 		}
