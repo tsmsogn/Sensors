@@ -25,11 +25,14 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-public class MainActivity extends TabActivity
+public class MainActivity extends TabActivity implements Toolbar.OnMenuItemClickListener
 {
+
+	private static final String TAG = "MainActicity";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -37,8 +40,11 @@ public class MainActivity extends TabActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Setup toolbar
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		toolbar.setTitle(R.string.title_activity_main);
+		toolbar.inflateMenu(R.menu.activity_main);
+		toolbar.setOnMenuItemClickListener(this);
 
 		TabHost tabHost = getTabHost();
 
@@ -65,7 +71,7 @@ public class MainActivity extends TabActivity
 		environmentSensors.setContent(environmentSensorIntent);
 
 		tabHost.addTab(environmentSensors);
-		
+
 		TabSpec userSensors = tabHost.newTabSpec("User Sensors");
 		userSensors.setIndicator("User Sensors", null);
 		Intent userSensorIntent = new Intent(this, SensorListActivity.class);
@@ -75,4 +81,21 @@ public class MainActivity extends TabActivity
 		tabHost.addTab(userSensors);
 	}
 
+	private void launchSettingsActivity()
+	{
+		startActivity(new Intent(this, SettingsActivity.class));
+	}
+
+	@Override
+	public boolean onMenuItemClick(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+		case R.id.menu_settings:
+			launchSettingsActivity();
+			break;
+		}
+
+		return false;
+	}
 }
