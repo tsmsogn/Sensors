@@ -21,10 +21,9 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 package com.ubhave.sensormanager.tester.pull;
 
-import java.text.DecimalFormat;
-
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,7 +31,12 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.R;
+import com.ubhave.sensormanager.tester.listeners.AbstractSensorDataListener;
+import com.ubhave.sensormanager.tester.listeners.SensorDataListenerUtils;
+
+import java.text.DecimalFormat;
 
 public class UpdateSensorConfigExampleActivity extends Activity
 {
@@ -41,6 +45,7 @@ public class UpdateSensorConfigExampleActivity extends Activity
 	private int selectedSensorType;
 	private DecimalFormat formatter;
 	private ExampleSensorConfigUpdater updater;
+	private AbstractSensorDataListener sensorDataListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -51,14 +56,23 @@ public class UpdateSensorConfigExampleActivity extends Activity
 		 */
 		selectedSensorType = getIntent().getIntExtra(SENSOR_TYPE_ID, -1);
 		updater = new ExampleSensorConfigUpdater(selectedSensorType);
+		try
+		{
+			sensorDataListener = SensorDataListenerUtils.getSensorDataListener(selectedSensorType);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
 
 		/*
 		 * Create the user interface
 		 */
 		formatter = new DecimalFormat("#.##");
 		
-		this.setTitle(updater.getSensorName() + " Config");
 		setContentView(R.layout.config_sensor_layout);
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setTitle(sensorDataListener.getSensorName()+" Config");
 
 		enableDoneButton();
 		enableProgressBar(R.id.sampleValue, R.id.sampleProgressBar, true);
