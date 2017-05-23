@@ -24,6 +24,7 @@ package com.ubhave.sensormanager.tester;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -71,12 +72,13 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 		 */
 		setContentView(getInterfaceLayout());
 
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setTitle(sensorDataListener.getSensorName());
+
 		enableStartSensingButton();
 		enableStopSensingButton();
 
 		setSensorStatusField(UNSUBSCRIBED);
-
-		setTitle(sensorDataListener.getSensorName());
 	}
 
 	@Override
