@@ -33,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.listeners.AbstractSensorDataListener;
 import com.ubhave.sensormanager.tester.listeners.SensorDataListenerUtils;
 
@@ -85,23 +84,12 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 	public void onPause()
 	{
 		super.onPause();
-		if (sensorDataListener.isSubscribed())
-		{
-			if (selectedSensorType != SensorUtils.SENSOR_TYPE_SCREEN)
-			{
-				unsubscribe();
-			}
-		}
 	}
 	
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		if (sensorDataListener.isSubscribed())
-		{
-			unsubscribe();
-		}
 	}
 
 	protected abstract int getInterfaceLayout();
