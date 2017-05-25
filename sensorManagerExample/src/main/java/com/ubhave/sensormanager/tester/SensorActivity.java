@@ -9,16 +9,16 @@ import android.support.v7.widget.Toolbar;
 
 import com.ubhave.sensormanager.sensors.SensorEnum;
 
-public class SettingsActivity extends PreferenceActivity
+public class SensorActivity extends PreferenceActivity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_settings);
+		setContentView(R.layout.activity_sensor);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		toolbar.setTitle(R.string.title_activity_settings);
+		toolbar.setTitle(R.string.title_activity_sensor);
 
 		// Create root preference screen
 		PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);

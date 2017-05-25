@@ -94,7 +94,7 @@
         <activity android:name=".pull.NonConfigurablePullSensorExampleActivity" />
         <activity android:name=".push.PushSensorExampleActivity" />
         <activity android:name=".pull.UpdateSensorConfigExampleActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SensorActivity" />
         <activity android:name=".RemoteServerActivity" />
     </application>
 

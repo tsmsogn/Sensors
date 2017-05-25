@@ -83,7 +83,7 @@ public class MainActivity extends TabActivity implements Toolbar.OnMenuItemClick
 
 	private void launchSettingsActivity()
 	{
-		startActivity(new Intent(this, SettingsActivity.class));
+		startActivity(new Intent(this, SensorActivity.class));
 	}
 
 	@Override

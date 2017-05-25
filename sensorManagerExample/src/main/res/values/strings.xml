@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="menu_settings">Settings</string>
+    <string name="menu_sensor">Sensor</string>
     <string name="menu_remote_server">Remote Server</string>
     <string name="title_activity_main">Sensors</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_sensor">Sensor Settings</string>
     <string name="title_activity_remote_server">Remote Server Settings</string>
 
     <string name="app_name">Sensors</string>
