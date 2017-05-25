@@ -22,7 +22,6 @@ import android.util.Log;
 
 import com.ubhave.datahandler.config.DataStorageConfig;
 import com.ubhave.datahandler.except.DataHandlerException;
-import com.ubhave.datahandler.loggertypes.AbstractDataLogger;
 import com.ubhave.datahandler.loggertypes.AbstractStoreOnlyLogger;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.ApplicationContext;
@@ -31,7 +30,7 @@ public class StoreOnlyEncryptedFiles extends AbstractStoreOnlyLogger
 {
 	private static StoreOnlyEncryptedFiles instance;
 	
-	public static AbstractDataLogger getInstance() throws ESException, DataHandlerException
+	public static StoreOnlyEncryptedFiles getInstance() throws ESException, DataHandlerException
 	{
 		if (instance == null)
 		{

@@ -23,7 +23,6 @@ import android.util.Log;
 import com.ubhave.datahandler.config.DataStorageConfig;
 import com.ubhave.datahandler.except.DataHandlerException;
 import com.ubhave.datahandler.loggertypes.AbstractAsyncTransferLogger;
-import com.ubhave.datahandler.loggertypes.AbstractDataLogger;
 import com.ubhave.datahandler.transfer.DataTransfer;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.ApplicationContext;
@@ -34,7 +33,7 @@ public class AsyncWiFiOnlyEncryptedDatabase extends AbstractAsyncTransferLogger
 {
 	private static AsyncWiFiOnlyEncryptedDatabase instance;
 
-	public static AbstractDataLogger getInstance() throws ESException, DataHandlerException
+	public static AsyncWiFiOnlyEncryptedDatabase getInstance() throws ESException, DataHandlerException
 	{
 		if (instance == null)
 		{

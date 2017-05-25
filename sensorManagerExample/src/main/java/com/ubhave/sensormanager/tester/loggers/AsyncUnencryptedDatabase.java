@@ -22,7 +22,6 @@ import android.content.Context;
 import com.ubhave.datahandler.config.DataStorageConfig;
 import com.ubhave.datahandler.except.DataHandlerException;
 import com.ubhave.datahandler.loggertypes.AbstractAsyncTransferLogger;
-import com.ubhave.datahandler.loggertypes.AbstractDataLogger;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.ApplicationContext;
 
@@ -32,7 +31,7 @@ public class AsyncUnencryptedDatabase extends AbstractAsyncTransferLogger
 {
 	private static AsyncUnencryptedDatabase instance;
 
-	public static AbstractDataLogger getInstance() throws ESException, DataHandlerException
+	public static AsyncUnencryptedDatabase getInstance() throws ESException, DataHandlerException
 	{
 		if (instance == null)
 		{
