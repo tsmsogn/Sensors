@@ -5,7 +5,8 @@ import android.content.Context;
 import com.ubhave.dataformatter.DataFormatter;
 import com.ubhave.dataformatter.json.JSONFormatter;
 import com.ubhave.datahandler.except.DataHandlerException;
-import com.ubhave.datahandler.loggertypes.AbstractDataLogger;
+import com.ubhave.datahandler.loggertypes.DataStoreCallback;
+import com.ubhave.datahandler.transfer.DataUploadCallback;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.ESSensorManager;
 import com.ubhave.sensormanager.ESSensorManagerInterface;
@@ -20,7 +21,7 @@ import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedDatabase;
 public abstract class AbstractSensorDataListener implements SensorDataListener
 {
 	private final int sensorType;
-	private AbstractDataLogger logger = null;
+	private AsyncUnencryptedDatabase logger = null;
 
 	private ESSensorManagerInterface sensorManager;
 	protected final JSONFormatter formatter;
@@ -94,7 +95,40 @@ public abstract class AbstractSensorDataListener implements SensorDataListener
 	@Override
 	public void onDataSensed(SensorData data)
 	{
-		logger.logSensorData(data);
+		logger.logSensorData(data, new DataStoreCallback()
+		{
+			@Override
+			public void onDataStored()
+			{
+				try
+				{
+					logger.flush(new DataUploadCallback()
+					{
+						@Override
+						public void onDataUploaded()
+						{
+
+						}
+
+						@Override
+						public void onDataUploadFailed()
+						{
+
+						}
+					});
+				}
+				catch (DataHandlerException e)
+				{
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void onDataStoreFailed()
+			{
+
+			}
+		});
 	}
 
 	public String getSensorName()
