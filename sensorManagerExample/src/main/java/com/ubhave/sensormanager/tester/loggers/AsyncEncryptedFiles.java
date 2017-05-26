@@ -48,19 +48,19 @@ public class AsyncEncryptedFiles extends AbstractAsyncTransferLogger
 	@Override
 	protected String getDataPostURL()
 	{
-		return RemoteServerDetails.FILE_POST_URL;
+		return RemoteServerDetails.getFilePostUrl();
 	}
 
 	@Override
 	protected String getPostKey()
 	{
-		return RemoteServerDetails.FILE_KEY;
+		return RemoteServerDetails.getFileKey();
 	}
 
 	@Override
 	protected String getSuccessfulPostResponse()
 	{
-		return RemoteServerDetails.RESPONSE_ON_SUCCESS;
+		return RemoteServerDetails.getResponseOnSuccess();
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class AsyncEncryptedFiles extends AbstractAsyncTransferLogger
 		// Note: any additional parameters (e.g., API key-value) that your URL
 		// requires
 		HashMap<String, String> params = new HashMap<String, String>();
-		params.put(RemoteServerDetails.API_KEY_KEY, RemoteServerDetails.API_KEY_VALUE);
+//		params.put(RemoteServerDetails.API_KEY_KEY, RemoteServerDetails.API_KEY_VALUE);
 		return params;
 	}
 
