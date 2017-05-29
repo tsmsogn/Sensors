@@ -16,12 +16,12 @@ import com.ubhave.sensormanager.config.pull.LocationConfig;
 import com.ubhave.sensormanager.data.SensorData;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
-import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedDatabase;
+import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedFiles;
 
 public abstract class AbstractSensorDataListener implements SensorDataListener
 {
 	private final int sensorType;
-	private AsyncUnencryptedDatabase logger = null;
+	private AsyncUnencryptedFiles logger = null;
 
 	private ESSensorManagerInterface sensorManager;
 	protected final JSONFormatter formatter;
@@ -54,7 +54,7 @@ public abstract class AbstractSensorDataListener implements SensorDataListener
 
 		try
 		{
-			logger = AsyncUnencryptedDatabase.getInstance();
+			logger = AsyncUnencryptedFiles.getInstance();
 		}
 		catch (ESException e)
 		{
