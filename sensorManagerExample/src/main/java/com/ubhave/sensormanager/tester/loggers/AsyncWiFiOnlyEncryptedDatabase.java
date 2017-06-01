@@ -26,6 +26,7 @@ import com.ubhave.datahandler.loggertypes.AbstractAsyncTransferLogger;
 import com.ubhave.datahandler.transfer.DataTransfer;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.ApplicationContext;
+import com.ubhave.sensormanager.tester.datahandler.config.DeviceHandlerConfig;
 
 import java.util.HashMap;
 
@@ -108,14 +109,14 @@ public class AsyncWiFiOnlyEncryptedDatabase extends AbstractAsyncTransferLogger
 	protected String getUniqueUserId()
 	{
 		// Note: this should not be a static string
-		return "test-user-id";
+		return DeviceHandlerConfig.getUserId();
 	}
 
 	@Override
 	protected String getDeviceId()
 	{
 		// Note: this should not be a static string
-		return "test-device-id";
+		return DeviceHandlerConfig.getDeviceId();
 	}
 
 	@Override

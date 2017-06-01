@@ -24,6 +24,7 @@ import com.ubhave.datahandler.except.DataHandlerException;
 import com.ubhave.datahandler.loggertypes.AbstractStoreOnlyLogger;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.tester.ApplicationContext;
+import com.ubhave.sensormanager.tester.datahandler.config.DeviceHandlerConfig;
 
 public class StoreOnlyUnencryptedFiles extends AbstractStoreOnlyLogger
 {
@@ -53,14 +54,14 @@ public class StoreOnlyUnencryptedFiles extends AbstractStoreOnlyLogger
 	protected String getUniqueUserId()
 	{
 		// Note: this should not be a static string
-		return "test-user-id";
+		return DeviceHandlerConfig.getUserId();
 	}
 
 	@Override
 	protected String getDeviceId()
 	{
 		// Note: this should not be a static string
-		return "test-device-id";
+		return DeviceHandlerConfig.getDeviceId();
 	}
 
 	@Override
