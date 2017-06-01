@@ -1,7 +1,6 @@
 package com.ubhave.sensormanager.tester;
 
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -23,12 +22,6 @@ public class RemoteServerActivity extends PreferenceActivity
 		// Create root preference screen
 		PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);
 		setPreferenceScreen(screen);
-
-		CheckBoxPreference postFile = new CheckBoxPreference(this);
-		postFile.setKey(RemoteServerDetails.POST_FILE);
-		postFile.setDefaultValue(RemoteServerDetails.DEFAULT_VALUE_POST_FILE);
-		postFile.setTitle("Post data to remote server");
-		screen.addPreference(postFile);
 
 		EditTextPreference filePostURL = new EditTextPreference(this);
 		filePostURL.setKey(RemoteServerDetails.FILE_POST_URL);
