@@ -22,8 +22,13 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 package com.ubhave.sensormanager.tester;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,6 +53,18 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 
 	protected AbstractSensorDataListener sensorDataListener;
 	protected int selectedSensorType, currentStatus;
+
+	private final BroadcastReceiver sensorDataReceiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			String data = intent.getStringExtra("sensorData");
+			int sensorType = intent.getIntExtra("sensorType", 0);
+
+			updateUI(sensorType, data);
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -78,6 +95,8 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 		enableStopSensingButton();
 
 		setSensorStatusField(UNSUBSCRIBED);
+
+		LocalBroadcastManager.getInstance(this).registerReceiver(sensorDataReceiver, new IntentFilter("receiveSensorData"));
 	}
 
 	@Override
@@ -89,6 +108,7 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 	@Override
 	public void onDestroy()
 	{
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(sensorDataReceiver);
 		super.onDestroy();
 	}
 
@@ -121,20 +141,23 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 	}
 
 	/*
-	 * Method called by the ExampleSensorDataListener sensorDataListener
+	 * Method called by the AbstractSensorDataListener sensorDataListener
 	 */
 
 	@Override
-	public void updateUI(final String data)
+	public void updateUI(int sensorId, final String data)
 	{
-		runOnUiThread(new Runnable()
+		if (sensorId == selectedSensorType)
 		{
-			public void run()
+			runOnUiThread(new Runnable()
 			{
-				setSensorDataField(data);
-				setSensorDataTime(System.currentTimeMillis());
-			}
-		});
+				public void run()
+				{
+					setSensorDataField(data);
+					setSensorDataTime(System.currentTimeMillis());
+				}
+			});
+		}
 	}
 
 	/*

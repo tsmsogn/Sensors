@@ -1,6 +1,8 @@
 package com.ubhave.sensormanager.tester.listeners;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.ubhave.dataformatter.DataFormatter;
 import com.ubhave.dataformatter.json.JSONFormatter;
@@ -16,9 +18,10 @@ import com.ubhave.sensormanager.config.pull.LocationConfig;
 import com.ubhave.sensormanager.data.SensorData;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
+import com.ubhave.sensormanager.tester.SensorDataSender;
 import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedFiles;
 
-public abstract class AbstractSensorDataListener implements SensorDataListener
+public abstract class AbstractSensorDataListener implements SensorDataListener, SensorDataSender
 {
 	private final int sensorType;
 	private AsyncUnencryptedFiles logger = null;
@@ -93,7 +96,7 @@ public abstract class AbstractSensorDataListener implements SensorDataListener
 	}
 
 	@Override
-	public void onDataSensed(SensorData data)
+	public void onDataSensed(final SensorData data)
 	{
 		logger.logSensorData(data, new DataStoreCallback()
 		{
@@ -129,6 +132,15 @@ public abstract class AbstractSensorDataListener implements SensorDataListener
 
 			}
 		});
+
+		try
+		{
+			send(formatter.toString(data));
+		}
+		catch (DataHandlerException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public String getSensorName()
@@ -152,5 +164,14 @@ public abstract class AbstractSensorDataListener implements SensorDataListener
 	@Override
 	public void onCrossingLowBatteryThreshold(boolean isBelowThreshold)
 	{
+	}
+
+	@Override
+	public void send(String data)
+	{
+		Intent intent = new Intent("receiveSensorData");
+		intent.putExtra("sensorType", sensorType);
+		intent.putExtra("sensorData", data);
+		LocalBroadcastManager.getInstance(ApplicationContext.getContext()).sendBroadcastSync(intent);
 	}
 }

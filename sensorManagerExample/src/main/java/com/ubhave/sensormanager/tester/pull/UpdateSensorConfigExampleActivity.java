@@ -55,7 +55,6 @@ public class UpdateSensorConfigExampleActivity extends Activity
 		 * Instantiate the sensor data listener
 		 */
 		selectedSensorType = getIntent().getIntExtra(SENSOR_TYPE_ID, -1);
-		updater = new ExampleSensorConfigUpdater(selectedSensorType);
 		try
 		{
 			sensorDataListener = SensorDataListenerUtils.getSensorDataListener(selectedSensorType);
@@ -64,6 +63,7 @@ public class UpdateSensorConfigExampleActivity extends Activity
 		{
 			e.printStackTrace();
 		}
+		updater = new ExampleSensorConfigUpdater(selectedSensorType);
 
 		/*
 		 * Create the user interface
