@@ -10,6 +10,7 @@ import android.util.Log;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.sensors.SensorInterface;
 import com.ubhave.sensormanager.sensors.SensorUtils;
+import com.ubhave.sensormanager.tester.datahandler.DeviceUtils;
 import com.ubhave.sensormanager.tester.listeners.AbstractSensorDataListener;
 import com.ubhave.sensormanager.tester.listeners.SensorDataListenerUtils;
 
@@ -33,11 +34,11 @@ public class StartupReceiver extends BroadcastReceiver
 
 				String sensorName = SensorUtils.getSensorName(s.getSensorType());
 
-				boolean startSensing = prefs.getBoolean("pref_"+sensorName, false);
+				boolean startSampling = DeviceUtils.startSamplingOnBoot(s.getSensorType());
 
-				if (startSensing && !sensorDataListener.isSubscribed())
+				if (startSampling && !sensorDataListener.isSubscribed())
 				{
-					Log.d(TAG, "Start sensing:"+sensorName);
+					Log.d(TAG, "Start sampling:"+sensorName);
 					sensorDataListener.subscribeToSensorData();
 				}
 			}

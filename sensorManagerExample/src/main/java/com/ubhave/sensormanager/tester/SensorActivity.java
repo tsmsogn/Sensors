@@ -7,7 +7,9 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.support.v7.widget.Toolbar;
 
+import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.sensors.SensorEnum;
+import com.ubhave.sensormanager.tester.datahandler.DeviceUtils;
 
 public class SensorActivity extends PreferenceActivity
 {
@@ -32,10 +34,18 @@ public class SensorActivity extends PreferenceActivity
 		// Create preferences
 		for (SensorEnum s : SensorEnum.values())
 		{
-			CheckBoxPreference pref = new CheckBoxPreference(this);
-			pref.setKey("pref_"+s.getName());
-			pref.setTitle(s.getName());
-			category.addPreference(pref);
+			try
+			{
+				String key = DeviceUtils.getSensorConfig(s.getType()).getStarSamplingOnBootPreferenceKey();
+				CheckBoxPreference pref = new CheckBoxPreference(this);
+				pref.setKey(key);
+				pref.setTitle(s.getName());
+				category.addPreference(pref);
+			}
+			catch (ESException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 }
