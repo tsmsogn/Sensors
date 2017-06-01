@@ -2,9 +2,11 @@
 
     <string name="menu_sensor">Sensor</string>
     <string name="menu_remote_server">Remote Server</string>
+    <string name="menu_device">Device</string>
     <string name="title_activity_main">Sensors</string>
     <string name="title_activity_sensor">Sensor Settings</string>
     <string name="title_activity_remote_server">Remote Server Settings</string>
+    <string name="title_activity_device">Device Settings</string>
 
     <string name="app_name">Sensors</string>
     <string name="instructions">Select a sensor from those available below.</string>

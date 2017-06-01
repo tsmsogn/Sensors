@@ -97,9 +97,17 @@ public class MainActivity extends TabActivity implements Toolbar.OnMenuItemClick
 		case R.id.menu_remote_server:
 			launchRemoteServerActivity();
 			break;
+		case R.id.menu_device:
+			launchDeviceActivity();
+			break;
 		}
 
 		return false;
+	}
+
+	private void launchDeviceActivity()
+	{
+		startActivity(new Intent(this, DeviceActivity.class));
 	}
 
 	private void launchRemoteServerActivity()

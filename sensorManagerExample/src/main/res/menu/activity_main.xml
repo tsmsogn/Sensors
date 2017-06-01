@@ -5,4 +5,7 @@
     <item android:id="@+id/menu_remote_server"
         android:title="@string/menu_remote_server"
         android:orderInCategory="110" />
+    <item android:id="@+id/menu_device"
+        android:title="@string/menu_device"
+        android:orderInCategory="120" />
 </menu>
