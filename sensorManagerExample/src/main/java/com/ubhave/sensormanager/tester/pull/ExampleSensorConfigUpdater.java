@@ -24,7 +24,13 @@ package com.ubhave.sensormanager.tester.pull;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.ESSensorManager;
 import com.ubhave.sensormanager.ESSensorManagerInterface;
+import com.ubhave.sensormanager.config.pull.BluetoothConfig;
+import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
+import com.ubhave.sensormanager.config.pull.LocationConfig;
+import com.ubhave.sensormanager.config.pull.MicrophoneConfig;
+import com.ubhave.sensormanager.config.pull.MotionSensorConfig;
 import com.ubhave.sensormanager.config.pull.PullSensorConfig;
+import com.ubhave.sensormanager.config.push.PassiveLocationConfig;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
 
@@ -63,11 +69,40 @@ public class ExampleSensorConfigUpdater
 	{
 		try
 		{
-			sensorManager.setSensorConfig(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS, millis);
+			switch (sensorType)
+			{
+			case SensorUtils.SENSOR_TYPE_BLUETOOTH:
+			case SensorUtils.SENSOR_TYPE_WIFI:
+				sensorManager.setSensorConfig(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS, (int) millis);
+				break;
+			default:
+				sensorManager.setSensorConfig(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS, millis);
+				break;
+			}
 		}
 		catch (ESException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	public int getSensorSampleWindow()
+	{
+		try
+		{
+			switch (sensorType)
+			{
+			case SensorUtils.SENSOR_TYPE_BLUETOOTH:
+			case SensorUtils.SENSOR_TYPE_WIFI:
+				return (int) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS) / 1000;
+			default:
+				return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS) / 1000);
+			}
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
 		}
 	}
 
@@ -80,20 +115,6 @@ public class ExampleSensorConfigUpdater
 		catch (ESException e)
 		{
 			e.printStackTrace();
-		}
-	}
-
-	public int getSensorSampleWindow()
-	{
-		try
-		{
-			Long sampleWindow = (Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS);
-			return (int) (sampleWindow / 1000);
-		}
-		catch (ESException e)
-		{
-			e.printStackTrace();
-			return 0;
 		}
 	}
 
@@ -111,4 +132,305 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
+	public void setSamplingDelay(int rate)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, MotionSensorConfig.SAMPLING_DELAY, rate);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getSamplingDelay()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, MotionSensorConfig.SAMPLING_DELAY);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setLowPassAlpha(Float alpha)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, MotionSensorConfig.LOW_PASS_ALPHA, alpha);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getLowPassAlpha()
+	{
+		try
+		{
+			Float lowPassAlpha = (Float) sensorManager.getSensorConfigValue(sensorType, MotionSensorConfig.LOW_PASS_ALPHA);
+			return (int) (lowPassAlpha * 100);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setMovementThreshold(int threshold)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, MotionSensorConfig.MOTION_THRESHOLD, threshold);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getMovementThreshold()
+	{
+		try
+		{
+			int movementThreshold = (int) sensorManager.getSensorConfigValue(sensorType, MotionSensorConfig.MOTION_THRESHOLD);
+			return movementThreshold;
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public Boolean isSensorEnabled()
+	{
+		try
+		{
+			return (Boolean) sensorManager.getSensorConfigValue(sensorType, BluetoothConfig.FORCE_ENABLE_SENSOR);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public void enableSensor(boolean enable)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, BluetoothConfig.FORCE_ENABLE_SENSOR, enable);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public void setSampleCycles(int cycles)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, PullSensorConfig.NUMBER_OF_SENSE_CYCLES, cycles);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getSampleCycles()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.NUMBER_OF_SENSE_CYCLES);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setLocationAccuracy(String locationAccuracy)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, LocationConfig.ACCURACY_TYPE, locationAccuracy);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public String getLocationAccuracy()
+	{
+		try
+		{
+			return (String) sensorManager.getSensorConfigValue(sensorType, LocationConfig.ACCURACY_TYPE);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public void setSamplingRate(int rate)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, MicrophoneConfig.SAMPLING_RATE, rate);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getSamplingRate()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, MicrophoneConfig.SAMPLING_RATE);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setSoundThreshold(int threshold)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, MicrophoneConfig.SOUND_THRESHOLD, threshold);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getSoundThreshold()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, MicrophoneConfig.SOUND_THRESHOLD);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setTimeLimit(long limit)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, ContentReaderConfig.TIME_LIMIT_MILLIS, limit);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getTimeLimit()
+	{
+		try
+		{
+			return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, ContentReaderConfig.TIME_LIMIT_MILLIS) / 1000);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setRowLimit(int limit)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, ContentReaderConfig.ROW_LIMIT, limit);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getRowLimit()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, ContentReaderConfig.ROW_LIMIT);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setTimeThreshold(int millis)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, PassiveLocationConfig.MIN_TIME, millis);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getTimeThreshold()
+	{
+		try
+		{
+			return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_TIME) / 1000);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public void setDistanceThreshold(float maters)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, PassiveLocationConfig.MIN_DISTANCE, maters);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public int getDistanceThreshold()
+	{
+		try
+		{
+			return (int) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_DISTANCE);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }

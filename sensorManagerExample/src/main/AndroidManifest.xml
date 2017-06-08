@@ -93,10 +93,21 @@
         <activity android:name=".pull.ConfigurablePullSensorExampleActivity" />
         <activity android:name=".pull.NonConfigurablePullSensorExampleActivity" />
         <activity android:name=".push.PushSensorExampleActivity" />
-        <activity android:name=".pull.UpdateSensorConfigExampleActivity" />
         <activity android:name=".SensorActivity" />
         <activity android:name=".RemoteServerActivity" />
         <activity android:name=".DeviceActivity" />
+
+        <!-- Sensor configs -->
+        <activity android:name=".UpdateBluetoothConfigActivity" />
+        <activity android:name=".UpdateContentReaderConfigActivity" />
+        <activity android:name=".UpdateLocationConfigActivity" />
+        <activity android:name=".UpdateMicrophoneConfigActivity" />
+        <activity android:name=".UpdateMotionSensorConfigActivity" />
+        <activity android:name=".UpdatePassiveLocationConfigActivity" />
+        <activity android:name=".UpdatePhoneRadioConfigActivity" />
+        <activity android:name=".UpdateSensorConfigActivity" />
+        <activity android:name=".UpdateStepCounterConfigActivity" />
+        <activity android:name=".UpdateWifiConfigActivity" />
     </application>
 
 </manifest>

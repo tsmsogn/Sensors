@@ -26,7 +26,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.R;
+import com.ubhave.sensormanager.tester.UpdateBluetoothConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateContentReaderConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateLocationConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateMicrophoneConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateMotionSensorConfigActivity;
+import com.ubhave.sensormanager.tester.UpdatePassiveLocationConfigActivity;
+import com.ubhave.sensormanager.tester.UpdatePhoneRadioConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateSensorConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateStepCounterConfigActivity;
+import com.ubhave.sensormanager.tester.UpdateWifiConfigActivity;
 
 public class ConfigurablePullSensorExampleActivity extends AbstractPullSensorExampleActivity
 {
@@ -46,9 +57,62 @@ public class ConfigurablePullSensorExampleActivity extends AbstractPullSensorExa
 
 	private void updateSensorConfig()
 	{
-		Intent intent = new Intent(this, UpdateSensorConfigExampleActivity.class);
-		intent.putExtra(UpdateSensorConfigExampleActivity.SENSOR_TYPE_ID, selectedSensorType);
-
-		startActivity(intent);
+		Intent intent;
+		switch (selectedSensorType)
+		{
+		case SensorUtils.SENSOR_TYPE_ACCELEROMETER:
+		case SensorUtils.SENSOR_TYPE_GYROSCOPE:
+		case SensorUtils.SENSOR_TYPE_MAGNETIC_FIELD:
+			intent = new Intent(this, UpdateMotionSensorConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_BLUETOOTH:
+			intent = new Intent(this, UpdateBluetoothConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_LOCATION:
+			intent = new Intent(this, UpdateLocationConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_MICROPHONE:
+			intent = new Intent(this, UpdateMicrophoneConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_WIFI:
+			intent = new Intent(this, UpdateWifiConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER:
+		case SensorUtils.SENSOR_TYPE_CALL_CONTENT_READER:
+			intent = new Intent(this, UpdateContentReaderConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_PHONE_RADIO:
+			intent = new Intent(this, UpdatePhoneRadioConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_PASSIVE_LOCATION:
+			intent = new Intent(this, UpdatePassiveLocationConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		case SensorUtils.SENSOR_TYPE_STEP_COUNTER:
+			intent = new Intent(this, UpdateStepCounterConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		default:
+			intent = new Intent(this, UpdateSensorConfigActivity.class);
+			intent.putExtra(AbstractUpdateSensorConfigActivity.SENSOR_TYPE_ID, selectedSensorType);
+			startActivity(intent);
+			break;
+		}
 	}
 }

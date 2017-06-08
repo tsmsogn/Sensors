@@ -16,20 +16,33 @@
     <string name="dataPushTitle">Sensed Data:</string>
     <string name="dataPullTitle">Latest Sensed Data:</string>
     <string name="dataTime">(Data Time)</string>
-    
+
     <string name="sampling">Sampling</string>
     <string name="subscribed">Subscribed</string>
     <string name="unsubscribed">Unsubscribed</string>
-    
+
     <string name="startSensing">Start Sensing</string>
     <string name="stopSensing">Stop Sensing</string>
     <string name="pullData">Sample Once</string>
     <string name="changeConfig">Change Sensor Configuration</string>
-    
+
     <string name="sampleTime">Sample Time:</string>
     <string name="sleepTime">Sleep Time:</string>
+    <string name="motionDelayRate">Motion Delay Rate:</string>
+    <string name="lowPassAlpha">Low Pass Alpha:</string>
+    <string name="movementThreshold">Movement Threshold:</string>
+    <string name="forceEnableSensor">Force enable sensor</string>
+    <string name="sampleCycles">Sample Cycles:</string>
+    <string name="distanceThreshold">Distance Threshold:</string>
+    <string name="locationAccuracyType">Location Accuracy Type:</string>
+    <string name="soundThreshold">Sound Threshold:</string>
+    <string name="samplingRate">Sampling Rate:</string>
+    <string name="timeLimit">Time Limit:</string>
+    <string name="rowLimit">Row Limit:</string>
+    <string name="timeThreshold">Time Threshold:</string>
+    <string name="adaptiveSensing">Adaptive Sensing:</string>
     <string name="done">Done</string>
-    
+
     <string name="accelerometer">Samples the phone\'s acceleration.</string>
     <string name="bluetooth">Scan for nearby Bluetooth devices.</string>
     <string name="location">Get the latitude/longitude coordinates.</string>
@@ -39,7 +52,7 @@
     <string name="sms_content">Query for the phone\'s SMS logs.</string>
     <string name="apps">Query for current apps that are running.</string>
     <string name="gyro">Samples the phone\'s gyroscope</string>
-	
+
     <string-array name="pull_sensors_descriptions">
         <item>@string/accelerometer</item>
         <item>@string/bluetooth</item>
@@ -51,14 +64,14 @@
         <item>@string/apps</item>
         <item>@string/gyro</item>
     </string-array>
-    
+
     <string name="battery">Battery level and charging status.</string>
     <string name="phonestate">Whether the phone is ringing/in a call/etc.</string>
     <string name="connectionstate">Monitors connection/disconnection events.</string>
     <string name="proximity">Is an object close to the phone\'s screen?</string>
     <string name="screen">Is the screen on/off?</string>
     <string name="sms">Short messages received/sent.</string>
-    
+
     <string-array name="push_sensors_descriptions">
         <item>@string/battery</item>
         <item>@string/connectionstate</item>
@@ -74,13 +87,33 @@
     <string name="humidity" />
 
     <string-array name="environment_sensors_descriptions">
-		<item>@string/ambienttemperature</item>
-		<item>@string/light</item>
-		<item>@string/pressure</item>
-		<item>@string/humidity</item>
+        <item>@string/ambienttemperature</item>
+        <item>@string/light</item>
+        <item>@string/pressure</item>
+        <item>@string/humidity</item>
     </string-array>
 
     <string name="user" />
+
+    <string name="fastest">SENSOR_DELAY_FASTEST</string>
+    <string name="game">SENSOR_DELAY_GAME</string>
+    <string name="ui">SENSOR_DELAY_UI</string>
+    <string name="normal">SENSOR_DELAY_NORMAL</string>
+
+    <string-array name="sampling_delay_types">
+        <item>@string/fastest</item>
+        <item>@string/game</item>
+        <item>@string/ui</item>
+        <item>@string/normal</item>
+    </string-array>
+
+    <string name="location_accuracy_coarse">LOCATION_ACCURACY_COARSE</string>
+    <string name="location_accuracy_fine">LOCATION_ACCURACY_FINE</string>
+
+    <string-array name="location_accuracy_types">
+        <item>@string/location_accuracy_coarse</item>
+        <item>@string/location_accuracy_fine</item>
+    </string-array>
 
     <string-array name="user_sensors_descriptions">
         <item>@string/user</item>

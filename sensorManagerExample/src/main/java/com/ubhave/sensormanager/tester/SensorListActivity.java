@@ -58,7 +58,7 @@ public class SensorListActivity extends Activity
 		SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER,
 		SensorUtils.SENSOR_TYPE_GYROSCOPE
 	};
-	
+
 	private final static int[] pushSensors = new int[] {
 		SensorUtils.SENSOR_TYPE_BATTERY,
 		SensorUtils.SENSOR_TYPE_CONNECTION_STATE,
@@ -79,7 +79,7 @@ public class SensorListActivity extends Activity
 		SensorUtils.SENSOR_TYPE_INTERACTION
 	};
 
-	private final static boolean[] isConfigurablePullSensor = new boolean[] {true, false, false, true, false, false, false, false, false};
+	private final static boolean[] isConfigurablePullSensor = new boolean[] {true, true, true, true, true, true, true, true};
 
 	private final static String TITLE = "title";
 	private final static String DESCRIPTION = "description";
@@ -146,7 +146,7 @@ public class SensorListActivity extends Activity
 		intent.putExtra(ExampleAbstractActivity.SENSOR_TYPE_ID, sensorType);
 		startActivity(intent);
 	}
-	
+
 	private void launchPullSensorActivity(int sensorType, boolean isConfigurable)
 	{
 		Intent intent;
