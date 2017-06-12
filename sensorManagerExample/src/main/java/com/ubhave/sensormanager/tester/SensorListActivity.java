@@ -51,17 +51,22 @@ public class SensorListActivity extends Activity
 	private final static int[] pullSensors = new int[] {
 			SensorUtils.SENSOR_TYPE_ACCELEROMETER,
 			SensorUtils.SENSOR_TYPE_BLUETOOTH,
-			SensorUtils.SENSOR_TYPE_LOCATION,
-			SensorUtils.SENSOR_TYPE_MICROPHONE,
-			SensorUtils.SENSOR_TYPE_WIFI,
 			SensorUtils.SENSOR_TYPE_CALL_CONTENT_READER,
+			SensorUtils.SENSOR_TYPE_GYROSCOPE,
+			SensorUtils.SENSOR_TYPE_LOCATION,
+			SensorUtils.SENSOR_TYPE_MAGNETIC_FIELD,
+			SensorUtils.SENSOR_TYPE_MICROPHONE,
+			SensorUtils.SENSOR_TYPE_PHONE_RADIO,
 			SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER,
-			SensorUtils.SENSOR_TYPE_GYROSCOPE
+			SensorUtils.SENSOR_TYPE_STEP_COUNTER,
+			SensorUtils.SENSOR_TYPE_WIFI
 	};
 
 	private final static int[] pushSensors = new int[] {
 			SensorUtils.SENSOR_TYPE_BATTERY,
 			SensorUtils.SENSOR_TYPE_CONNECTION_STATE,
+			SensorUtils.SENSOR_TYPE_CONNECTION_STRENGTH,
+			SensorUtils.SENSOR_TYPE_PASSIVE_LOCATION,
 			SensorUtils.SENSOR_TYPE_PHONE_STATE,
 			SensorUtils.SENSOR_TYPE_PROXIMITY,
 			SensorUtils.SENSOR_TYPE_SCREEN,
@@ -70,16 +75,16 @@ public class SensorListActivity extends Activity
 
 	private final static int[] environmentSensors = new int[] {
 			SensorUtils.SENSOR_TYPE_AMBIENT_TEMPERATURE,
+			SensorUtils.SENSOR_TYPE_HUMIDITY,
 			SensorUtils.SENSOR_TYPE_LIGHT,
-			SensorUtils.SENSOR_TYPE_PRESSURE,
-			SensorUtils.SENSOR_TYPE_HUMIDITY
+			SensorUtils.SENSOR_TYPE_PRESSURE
 	};
 
 	private final static int[] userSensors = new int[] {
 			SensorUtils.SENSOR_TYPE_INTERACTION
 	};
 
-	private final static boolean[] isConfigurablePullSensor = new boolean[] {true, true, true, true, true, true, true, true};
+	private final static boolean[] isConfigurablePullSensor = new boolean[] {true, true, true, true, true, true, true, true, true, true, true};
 
 	private final static String TITLE = "title";
 	private final static String DESCRIPTION = "description";

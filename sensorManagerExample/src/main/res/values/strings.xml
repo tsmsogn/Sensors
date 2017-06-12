@@ -45,29 +45,35 @@
 
     <string name="accelerometer">Samples the phone\'s acceleration.</string>
     <string name="bluetooth">Scan for nearby Bluetooth devices.</string>
-    <string name="location">Get the latitude/longitude coordinates.</string>
-    <string name="microphone">Record an audio sample.</string>
-    <string name="wifi">Scan for Wi-Fi networks that are in range.</string>
     <string name="call_content">Query for the phone\'s call logs.</string>
+    <string name="gyro">Samples the phone\'s gyroscope</string>
+    <string name="location">Get the latitude/longitude coordinates.</string>
+    <string name="magnetic_field" />
+    <string name="microphone">Record an audio sample.</string>
+    <string name="phone_radio" />
     <string name="sms_content">Query for the phone\'s SMS logs.</string>
     <string name="apps">Query for current apps that are running.</string>
-    <string name="gyro">Samples the phone\'s gyroscope</string>
+    <string name="wifi">Scan for Wi-Fi networks that are in range.</string>
 
     <string-array name="pull_sensors_descriptions">
         <item>@string/accelerometer</item>
         <item>@string/bluetooth</item>
-        <item>@string/location</item>
-        <item>@string/microphone</item>
-        <item>@string/wifi</item>
         <item>@string/call_content</item>
+        <item>@string/gyro</item>
+        <item>@string/location</item>
+        <item>@string/magnetic_field</item>
+        <item>@string/microphone</item>
+        <item>@string/phone_radio</item>
         <item>@string/sms_content</item>
         <item>@string/apps</item>
-        <item>@string/gyro</item>
+        <item>@string/wifi</item>
     </string-array>
 
     <string name="battery">Battery level and charging status.</string>
-    <string name="phonestate">Whether the phone is ringing/in a call/etc.</string>
     <string name="connectionstate">Monitors connection/disconnection events.</string>
+    <string name="connectionstrength" />
+    <string name="passivelocation" />
+    <string name="phonestate">Whether the phone is ringing/in a call/etc.</string>
     <string name="proximity">Is an object close to the phone\'s screen?</string>
     <string name="screen">Is the screen on/off?</string>
     <string name="sms">Short messages received/sent.</string>
@@ -75,6 +81,8 @@
     <string-array name="push_sensors_descriptions">
         <item>@string/battery</item>
         <item>@string/connectionstate</item>
+        <item>@string/connectionstrength</item>
+        <item>@string/passivelocation</item>
         <item>@string/phonestate</item>
         <item>@string/proximity</item>
         <item>@string/screen</item>
@@ -88,12 +96,16 @@
 
     <string-array name="environment_sensors_descriptions">
         <item>@string/ambienttemperature</item>
+        <item>@string/humidity</item>
         <item>@string/light</item>
         <item>@string/pressure</item>
-        <item>@string/humidity</item>
     </string-array>
 
     <string name="user" />
+
+    <string-array name="user_sensors_descriptions">
+        <item>@string/user</item>
+    </string-array>
 
     <string name="fastest">SENSOR_DELAY_FASTEST</string>
     <string name="game">SENSOR_DELAY_GAME</string>
@@ -113,10 +125,6 @@
     <string-array name="location_accuracy_types">
         <item>@string/location_accuracy_coarse</item>
         <item>@string/location_accuracy_fine</item>
-    </string-array>
-
-    <string-array name="user_sensors_descriptions">
-        <item>@string/user</item>
     </string-array>
 
 </resources>
