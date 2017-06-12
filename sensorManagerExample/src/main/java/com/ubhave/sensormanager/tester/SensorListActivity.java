@@ -49,42 +49,42 @@ public class SensorListActivity extends Activity
 	public final static int USER_SENSOR_TYPE = 4;
 
 	private final static int[] pullSensors = new int[] {
-		SensorUtils.SENSOR_TYPE_ACCELEROMETER,
-		SensorUtils.SENSOR_TYPE_BLUETOOTH,
-		SensorUtils.SENSOR_TYPE_LOCATION,
-		SensorUtils.SENSOR_TYPE_MICROPHONE,
-		SensorUtils.SENSOR_TYPE_WIFI,
-		SensorUtils.SENSOR_TYPE_CALL_CONTENT_READER,
-		SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER,
-		SensorUtils.SENSOR_TYPE_GYROSCOPE
+			SensorUtils.SENSOR_TYPE_ACCELEROMETER,
+			SensorUtils.SENSOR_TYPE_BLUETOOTH,
+			SensorUtils.SENSOR_TYPE_LOCATION,
+			SensorUtils.SENSOR_TYPE_MICROPHONE,
+			SensorUtils.SENSOR_TYPE_WIFI,
+			SensorUtils.SENSOR_TYPE_CALL_CONTENT_READER,
+			SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER,
+			SensorUtils.SENSOR_TYPE_GYROSCOPE
 	};
 
 	private final static int[] pushSensors = new int[] {
-		SensorUtils.SENSOR_TYPE_BATTERY,
-		SensorUtils.SENSOR_TYPE_CONNECTION_STATE,
-		SensorUtils.SENSOR_TYPE_PHONE_STATE,
-		SensorUtils.SENSOR_TYPE_PROXIMITY,
-		SensorUtils.SENSOR_TYPE_SCREEN,
-		SensorUtils.SENSOR_TYPE_SMS
+			SensorUtils.SENSOR_TYPE_BATTERY,
+			SensorUtils.SENSOR_TYPE_CONNECTION_STATE,
+			SensorUtils.SENSOR_TYPE_PHONE_STATE,
+			SensorUtils.SENSOR_TYPE_PROXIMITY,
+			SensorUtils.SENSOR_TYPE_SCREEN,
+			SensorUtils.SENSOR_TYPE_SMS
 	};
 
 	private final static int[] environmentSensors = new int[] {
-		SensorUtils.SENSOR_TYPE_AMBIENT_TEMPERATURE,
-		SensorUtils.SENSOR_TYPE_LIGHT,
-		SensorUtils.SENSOR_TYPE_PRESSURE,
-		SensorUtils.SENSOR_TYPE_HUMIDITY
+			SensorUtils.SENSOR_TYPE_AMBIENT_TEMPERATURE,
+			SensorUtils.SENSOR_TYPE_LIGHT,
+			SensorUtils.SENSOR_TYPE_PRESSURE,
+			SensorUtils.SENSOR_TYPE_HUMIDITY
 	};
 
 	private final static int[] userSensors = new int[] {
-		SensorUtils.SENSOR_TYPE_INTERACTION
+			SensorUtils.SENSOR_TYPE_INTERACTION
 	};
 
 	private final static boolean[] isConfigurablePullSensor = new boolean[] {true, true, true, true, true, true, true, true};
 
 	private final static String TITLE = "title";
 	private final static String DESCRIPTION = "description";
-	private final static String[] from = new String[] { TITLE, DESCRIPTION };
-	private final static int[] to = new int[] { R.id.title, R.id.description };
+	private final static String[] from = new String[] {TITLE, DESCRIPTION};
+	private final static int[] to = new int[] {R.id.title, R.id.description};
 
 	private int sensorListType;
 	private List<HashMap<String, String>> sensorList;
@@ -106,7 +106,8 @@ public class SensorListActivity extends Activity
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
 			{
-				switch (sensorListType) {
+				switch (sensorListType)
+				{
 				case PULL_SENSOR_TYPE:
 					launchPullSensorActivity(pullSensors[position], isConfigurablePullSensor[position]);
 					break;
