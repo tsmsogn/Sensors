@@ -86,7 +86,7 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getSensorSampleWindow()
+	public long getSensorSampleWindow()
 	{
 		try
 		{
@@ -94,9 +94,9 @@ public class ExampleSensorConfigUpdater
 			{
 			case SensorUtils.SENSOR_TYPE_BLUETOOTH:
 			case SensorUtils.SENSOR_TYPE_WIFI:
-				return (int) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS) / 1000;
+				return (int) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS);
 			default:
-				return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS) / 1000);
+				return (Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS);
 			}
 		}
 		catch (ESException e)
@@ -118,12 +118,11 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getSensorSleepWindow()
+	public long getSensorSleepWindow()
 	{
 		try
 		{
-			Long sampleWindow = (Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS);
-			return (int) (sampleWindow / 1000);
+			return (Long) sensorManager.getSensorConfigValue(sensorType, PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS);
 		}
 		catch (ESException e)
 		{
@@ -169,12 +168,11 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getLowPassAlpha()
+	public float getLowPassAlpha()
 	{
 		try
 		{
-			Float lowPassAlpha = (Float) sensorManager.getSensorConfigValue(sensorType, MotionSensorConfig.LOW_PASS_ALPHA);
-			return (int) (lowPassAlpha * 100);
+			return (Float) sensorManager.getSensorConfigValue(sensorType, MotionSensorConfig.LOW_PASS_ALPHA);
 		}
 		catch (ESException e)
 		{
@@ -209,6 +207,18 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
+	public void enableSensor(boolean enable)
+	{
+		try
+		{
+			sensorManager.setSensorConfig(sensorType, BluetoothConfig.FORCE_ENABLE_SENSOR, enable);
+		}
+		catch (ESException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	public Boolean isSensorEnabled()
 	{
 		try
@@ -219,18 +229,6 @@ public class ExampleSensorConfigUpdater
 		{
 			e.printStackTrace();
 			return false;
-		}
-	}
-
-	public void enableSensor(boolean enable)
-	{
-		try
-		{
-			sensorManager.setSensorConfig(sensorType, BluetoothConfig.FORCE_ENABLE_SENSOR, enable);
-		}
-		catch (ESException e)
-		{
-			e.printStackTrace();
 		}
 	}
 
@@ -346,11 +344,11 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getTimeLimit()
+	public long getTimeLimit()
 	{
 		try
 		{
-			return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, ContentReaderConfig.TIME_LIMIT_MILLIS) / 1000);
+			return (Long) sensorManager.getSensorConfigValue(sensorType, ContentReaderConfig.TIME_LIMIT_MILLIS);
 		}
 		catch (ESException e)
 		{
@@ -396,11 +394,11 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getTimeThreshold()
+	public long getTimeThreshold()
 	{
 		try
 		{
-			return (int) ((Long) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_TIME) / 1000);
+			return (Long) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_TIME);
 		}
 		catch (ESException e)
 		{
@@ -421,11 +419,11 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public int getDistanceThreshold()
+	public float getDistanceThreshold()
 	{
 		try
 		{
-			return (int) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_DISTANCE);
+			return (float) sensorManager.getSensorConfigValue(sensorType, PassiveLocationConfig.MIN_DISTANCE);
 		}
 		catch (ESException e)
 		{

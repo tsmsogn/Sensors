@@ -47,7 +47,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 
 	private int selectedSensorType;
 	private DecimalFormat formatter;
-	private ExampleSensorConfigUpdater updater;
+	private SensorConfigUpdater updater;
 	private AbstractSensorDataListener sensorDataListener;
 	private String[] samplingDelayTypes;
 	private String[] enableLocationAccuracyTypes;
@@ -71,7 +71,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 		{
 			e.printStackTrace();
 		}
-		updater = new ExampleSensorConfigUpdater(selectedSensorType);
+		updater = new SensorConfigUpdater(this, selectedSensorType);
 
 		enableLocationAccuracyTypes = getResources().getStringArray(R.array.location_accuracy_types);
 
@@ -143,13 +143,13 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 			switch (progressId)
 			{
 			case R.id.sampleProgressBar:
-				initialValue = updater.getSensorSampleWindow();
+				initialValue = (int) (updater.getSensorSampleWindow() / 1000);
 				break;
 			case R.id.sleepProgressBar:
-				initialValue = updater.getSensorSleepWindow();
+				initialValue = (int) (updater.getSensorSleepWindow() / 1000);
 				break;
 			case R.id.lowPassAlphaProgressBar:
-				initialValue = updater.getLowPassAlpha();
+				initialValue = (int) (updater.getLowPassAlpha() * 100);
 				break;
 			case R.id.movementThresholdProgressBar:
 				initialValue = updater.getMovementThreshold();
@@ -164,16 +164,16 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 				initialValue = updater.getSoundThreshold();
 				break;
 			case R.id.timeLimitProgressBar:
-				initialValue = updater.getTimeLimit();
+				initialValue = (int) (updater.getTimeLimit() / 1000);
 				break;
 			case R.id.rowLimitProgressBar:
 				initialValue = updater.getRowLimit();
 				break;
 			case R.id.timeThresholdProgressBar:
-				initialValue = updater.getTimeThreshold();
+				initialValue = (int) (updater.getTimeThreshold() / 1000);
 				break;
 			case R.id.distanceThresholdProgressBar:
-				initialValue = updater.getDistanceThreshold();
+				initialValue = (int) updater.getDistanceThreshold();
 				break;
 			}
 
