@@ -349,7 +349,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/rowLimitValue"
                         android:layout_marginTop="10dp"
-                        android:max="900"
+                        android:max="2000"
                         android:progress="0" />
                 </RelativeLayout>
 
