@@ -81,19 +81,11 @@ public class MainActivity extends TabActivity implements Toolbar.OnMenuItemClick
 		tabHost.addTab(userSensors);
 	}
 
-	private void launchSettingsActivity()
-	{
-		startActivity(new Intent(this, SensorActivity.class));
-	}
-
 	@Override
 	public boolean onMenuItemClick(MenuItem item)
 	{
 		switch (item.getItemId())
 		{
-		case R.id.menu_settings:
-			launchSettingsActivity();
-			break;
 		case R.id.menu_remote_server:
 			launchRemoteServerActivity();
 			break;

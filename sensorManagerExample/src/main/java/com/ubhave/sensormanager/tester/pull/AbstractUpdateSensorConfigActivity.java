@@ -85,6 +85,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		toolbar.setTitle(sensorDataListener.getSensorName()+" Config");
 
+		enableCheckBox(R.id.startSamplingOnBootCheckBox, enableSampCheckBox());
 		enableProgressBar(R.id.sampleValue, TIME, R.id.sampleProgressBar, enableSampleTimeProgressBar());
 		enableProgressBar(R.id.sleepValue, TIME, R.id.sleepProgressBar, enableSleepTimeProgressBar());
 		enableSamplingDelaySpinner(R.id.motionDelayTypeSpinner, enableMotionDelayRateSpinner());
@@ -100,6 +101,8 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 		enableProgressBar(R.id.timeThresholdValue, TIME, R.id.timeThresholdProgressBar, enableTimeThresholdProgressBar());
 		enableProgressBar(R.id.distanceThresholdValue, "", R.id.distanceThresholdProgressBar, enableDistanceThresholdProgressBar());
 	}
+
+	protected abstract boolean enableSampCheckBox();
 
 	protected abstract boolean enableDistanceThresholdProgressBar();
 
@@ -335,6 +338,9 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 
 			switch (checkBoxId)
 			{
+			case R.id.startSamplingOnBootCheckBox:
+				initialValue = updater.isStartSamplingOnBoot();
+				break;
 			case R.id.enableSensorCheckBox:
 				initialValue = updater.isSensorEnabled();
 				break;
@@ -349,6 +355,9 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 				{
 					switch (checkBoxId)
 					{
+					case R.id.startSamplingOnBootCheckBox:
+						updater.startSamplingOnBoot(isChecked);
+						break;
 					case R.id.enableSensorCheckBox:
 						updater.enableSensor(isChecked);
 						break;

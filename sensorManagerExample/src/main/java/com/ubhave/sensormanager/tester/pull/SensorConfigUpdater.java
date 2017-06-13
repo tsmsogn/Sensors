@@ -21,6 +21,7 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 	private final SharedPreferences.Editor editor;
 	private int sensorType;
 	private ESSensorManagerInterface sensorManager;
+	private static final String START_SAMPLING_KEY_PREFIX = "START_SAMPLING";
 
 	public SensorConfigUpdater(Context context, int sensor)
 	{
@@ -292,5 +293,18 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 	{
 		String parameter = PassiveLocationConfig.MIN_DISTANCE;
 		return preferences.getFloat(createPreferenceKey(parameter), super.getDistanceThreshold());
+	}
+
+	public void startSamplingOnBoot(boolean enabled)
+	{
+		String parameter = START_SAMPLING_KEY_PREFIX;
+		editor.putBoolean(createPreferenceKey(parameter), enabled);
+		editor.commit();
+	}
+
+	public boolean isStartSamplingOnBoot()
+	{
+		String parameter = START_SAMPLING_KEY_PREFIX;
+		return preferences.getBoolean(createPreferenceKey(parameter), false);
 	}
 }

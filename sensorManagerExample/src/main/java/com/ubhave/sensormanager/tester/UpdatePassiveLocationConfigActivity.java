@@ -5,6 +5,12 @@ import com.ubhave.sensormanager.tester.pull.AbstractUpdateSensorConfigActivity;
 public class UpdatePassiveLocationConfigActivity extends AbstractUpdateSensorConfigActivity
 {
 	@Override
+	protected boolean enableSampCheckBox()
+	{
+		return true;
+	}
+
+	@Override
 	protected boolean enableDistanceThresholdProgressBar()
 	{
 		return true;

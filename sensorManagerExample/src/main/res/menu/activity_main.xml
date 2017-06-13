@@ -1,7 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings"
-        android:title="@string/menu_sensor"
-        android:orderInCategory="100" />
     <item android:id="@+id/menu_remote_server"
         android:title="@string/menu_remote_server"
         android:orderInCategory="110" />
