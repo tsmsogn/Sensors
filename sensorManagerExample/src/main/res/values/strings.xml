@@ -26,7 +26,7 @@
     <string name="pullData">Sample Once</string>
     <string name="changeConfig">Change Sensor Configuration</string>
 
-    <string name="startSamplingOnBoot">Start Sampling On Boot:</string>
+    <string name="startSensingOnBoot">Start Sensing On Boot:</string>
     <string name="sampleTime">Sample Time:</string>
     <string name="sleepTime">Sleep Time:</string>
     <string name="motionDelayRate">Motion Delay Rate:</string>

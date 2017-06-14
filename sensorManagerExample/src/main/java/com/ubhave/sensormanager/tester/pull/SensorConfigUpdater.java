@@ -21,7 +21,7 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 	private final SharedPreferences.Editor editor;
 	private int sensorType;
 	private ESSensorManagerInterface sensorManager;
-	private static final String START_SAMPLING_KEY_PREFIX = "START_SAMPLING";
+	private static final String START_SENSING_ON_BOOT_PARAMETER = "START_SENSING_ON_BOOT";
 
 	public SensorConfigUpdater(Context context, int sensor)
 	{
@@ -295,16 +295,16 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 		return preferences.getFloat(createPreferenceKey(parameter), super.getDistanceThreshold());
 	}
 
-	public void startSamplingOnBoot(boolean enabled)
+	public void startSensingOnBoot(boolean enabled)
 	{
-		String parameter = START_SAMPLING_KEY_PREFIX;
+		String parameter = START_SENSING_ON_BOOT_PARAMETER;
 		editor.putBoolean(createPreferenceKey(parameter), enabled);
 		editor.commit();
 	}
 
-	public boolean isStartSamplingOnBoot()
+	public boolean isStartSensingOnBoot()
 	{
-		String parameter = START_SAMPLING_KEY_PREFIX;
+		String parameter = START_SENSING_ON_BOOT_PARAMETER;
 		return preferences.getBoolean(createPreferenceKey(parameter), false);
 	}
 }

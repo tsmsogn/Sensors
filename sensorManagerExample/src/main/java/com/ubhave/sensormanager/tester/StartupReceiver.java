@@ -31,7 +31,7 @@ public class StartupReceiver extends BroadcastReceiver
 
 				String sensorName = SensorUtils.getSensorName(s.getSensorType());
 
-				if (sensorConfigUpdater.isStartSamplingOnBoot() && !sensorDataListener.isSubscribed())
+				if (sensorConfigUpdater.isStartSensingOnBoot() && !sensorDataListener.isSubscribed())
 				{
 					Log.d(TAG, "Start sampling:"+sensorName);
 					sensorDataListener.subscribeToSensorData();

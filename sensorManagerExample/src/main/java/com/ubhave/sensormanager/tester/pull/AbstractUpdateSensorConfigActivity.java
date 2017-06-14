@@ -339,7 +339,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 			switch (checkBoxId)
 			{
 			case R.id.startSamplingOnBootCheckBox:
-				initialValue = updater.isStartSamplingOnBoot();
+				initialValue = updater.isStartSensingOnBoot();
 				break;
 			case R.id.enableSensorCheckBox:
 				initialValue = updater.isSensorEnabled();
@@ -356,7 +356,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 					switch (checkBoxId)
 					{
 					case R.id.startSamplingOnBootCheckBox:
-						updater.startSamplingOnBoot(isChecked);
+						updater.startSensingOnBoot(isChecked);
 						break;
 					case R.id.enableSensorCheckBox:
 						updater.enableSensor(isChecked);
