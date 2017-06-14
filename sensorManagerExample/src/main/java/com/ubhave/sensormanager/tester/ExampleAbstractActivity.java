@@ -94,7 +94,14 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 		enableStartSensingButton();
 		enableStopSensingButton();
 
-		setSensorStatusField(UNSUBSCRIBED);
+		if (sensorDataListener.isSubscribed())
+		{
+			setSensorStatusField(SUBSCRIBED);
+		}
+		else
+		{
+			setSensorStatusField(UNSUBSCRIBED);
+		}
 
 		LocalBroadcastManager.getInstance(this).registerReceiver(sensorDataReceiver, new IntentFilter("receiveSensorData"));
 	}
@@ -104,7 +111,7 @@ public abstract class ExampleAbstractActivity extends Activity implements Sensor
 	{
 		super.onPause();
 	}
-	
+
 	@Override
 	public void onDestroy()
 	{
