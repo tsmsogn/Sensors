@@ -382,7 +382,7 @@ public class ExampleSensorConfigUpdater
 		}
 	}
 
-	public void setTimeThreshold(int millis)
+	public void setTimeThreshold(long millis)
 	{
 		try
 		{

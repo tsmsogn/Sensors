@@ -262,7 +262,7 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 	}
 
 	@Override
-	public void setTimeThreshold(int millis)
+	public void setTimeThreshold(long millis)
 	{
 		super.setTimeThreshold(millis);
 
