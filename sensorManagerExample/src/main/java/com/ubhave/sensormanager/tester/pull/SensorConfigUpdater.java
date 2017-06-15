@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.ubhave.sensormanager.ESSensorManagerInterface;
+import com.ubhave.sensormanager.config.SensorConfig;
 import com.ubhave.sensormanager.config.pull.BluetoothConfig;
 import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
 import com.ubhave.sensormanager.config.pull.LocationConfig;
@@ -13,12 +14,14 @@ import com.ubhave.sensormanager.config.pull.MotionSensorConfig;
 import com.ubhave.sensormanager.config.pull.PullSensorConfig;
 import com.ubhave.sensormanager.config.push.PassiveLocationConfig;
 import com.ubhave.sensormanager.sensors.SensorUtils;
+import com.ubhave.sensormanager.tester.config.AppSensorConfig;
 
 public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 {
 	private final Context context;
 	private final SharedPreferences preferences;
 	private final SharedPreferences.Editor editor;
+	private final SensorConfig defaultConfig;
 	private int sensorType;
 	private ESSensorManagerInterface sensorManager;
 	private static final String START_SENSING_ON_BOOT_PARAMETER = "START_SENSING_ON_BOOT";
@@ -29,6 +32,7 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 		this.context = context;
 		this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		this.editor = preferences.edit();
+		this.defaultConfig = AppSensorConfig.getDefaultConfig(sensorType);
 	}
 
 	private String createPreferenceKey(String parameter)
@@ -53,12 +57,12 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 		setTimeThreshold(getTimeThreshold());
 		setDistanceThreshold(getDistanceThreshold());
 	}
-	
+
 	@Override
 	public void reset()
 	{
 		super.reset();
-		
+
 		setSensorSampleWindow(super.getSensorSampleWindow());
 		setSensorSleepWindow(super.getSensorSleepWindow());
 		setSamplingDelay(super.getSamplingDelay());
@@ -73,7 +77,7 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 		setRowLimit(super.getRowLimit());
 		setTimeThreshold(super.getTimeThreshold());
 		setDistanceThreshold(super.getDistanceThreshold());
-		startSensingOnBoot(false);
+		startSensingOnBoot((Boolean) defaultConfig.getParameter(AppSensorConfig.START_SENSING_ON_BOOT_PARAMETER));
 	}
 
 	@Override
@@ -337,14 +341,14 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 
 	public void startSensingOnBoot(boolean enabled)
 	{
-		String parameter = START_SENSING_ON_BOOT_PARAMETER;
+		String parameter = AppSensorConfig.START_SENSING_ON_BOOT_PARAMETER;
 		editor.putBoolean(createPreferenceKey(parameter), enabled);
 		editor.commit();
 	}
 
 	public boolean isStartSensingOnBoot()
 	{
-		String parameter = START_SENSING_ON_BOOT_PARAMETER;
-		return preferences.getBoolean(createPreferenceKey(parameter), false);
+		String parameter = AppSensorConfig.START_SENSING_ON_BOOT_PARAMETER;
+		return preferences.getBoolean(createPreferenceKey(parameter), (Boolean) defaultConfig.getParameter(AppSensorConfig.START_SENSING_ON_BOOT_PARAMETER));
 	}
 }
