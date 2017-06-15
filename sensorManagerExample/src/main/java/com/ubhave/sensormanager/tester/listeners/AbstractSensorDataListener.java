@@ -14,12 +14,12 @@ import com.ubhave.sensormanager.ESSensorManager;
 import com.ubhave.sensormanager.ESSensorManagerInterface;
 import com.ubhave.sensormanager.SensorDataListener;
 import com.ubhave.sensormanager.config.GlobalConfig;
-import com.ubhave.sensormanager.config.pull.LocationConfig;
 import com.ubhave.sensormanager.data.SensorData;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
 import com.ubhave.sensormanager.tester.SensorDataSender;
 import com.ubhave.sensormanager.tester.loggers.AsyncUnencryptedFiles;
+import com.ubhave.sensormanager.tester.pull.SensorConfigUpdater;
 
 public abstract class AbstractSensorDataListener implements SensorDataListener, SensorDataSender
 {
@@ -39,16 +39,12 @@ public abstract class AbstractSensorDataListener implements SensorDataListener, 
 
 		Context context = ApplicationContext.getContext();
 		formatter = DataFormatter.getJSONFormatter(context, sensorType);
+		new SensorConfigUpdater(context, sensorType).set();
 
 		try
 		{
 			sensorManager = ESSensorManager.getSensorManager(context);
 			sensorManager.setGlobalConfig(GlobalConfig.LOW_BATTERY_THRESHOLD, 25);
-
-			if (sensorType == SensorUtils.SENSOR_TYPE_LOCATION)
-			{
-				sensorManager.setSensorConfig(SensorUtils.SENSOR_TYPE_LOCATION, LocationConfig.ACCURACY_TYPE, LocationConfig.LOCATION_ACCURACY_FINE);
-			}
 		}
 		catch (ESException e)
 		{
