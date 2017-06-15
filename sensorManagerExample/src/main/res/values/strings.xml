@@ -122,6 +122,7 @@
 
     <string name="location_accuracy_coarse">LOCATION_ACCURACY_COARSE</string>
     <string name="location_accuracy_fine">LOCATION_ACCURACY_FINE</string>
+    <string name="resetSensorConfiguration">Reset Sensor Configuration</string>
 
     <string-array name="location_accuracy_types">
         <item>@string/location_accuracy_coarse</item>

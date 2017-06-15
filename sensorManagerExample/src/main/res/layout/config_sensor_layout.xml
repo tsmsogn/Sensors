@@ -432,6 +432,18 @@
                         android:progress="0" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp">
+
+                    <Button
+                        android:id="@+id/resetButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/resetSensorConfiguration" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         </RelativeLayout>

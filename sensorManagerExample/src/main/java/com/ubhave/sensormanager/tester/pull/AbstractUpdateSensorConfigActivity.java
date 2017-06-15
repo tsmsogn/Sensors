@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
@@ -54,6 +55,7 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 
 	private static final String TIME = "TIME";
 	private static final String PERCENTAGE = "PERCENTAGE";
+	private Button resetButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -84,6 +86,17 @@ public abstract class AbstractUpdateSensorConfigActivity extends Activity
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		toolbar.setTitle(sensorDataListener.getSensorName()+" Config");
+
+		resetButton = (Button) findViewById(R.id.resetButton);
+		resetButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				updater.reset();
+				AbstractUpdateSensorConfigActivity.this.finish();
+			}
+		});
 
 		enableCheckBox(R.id.startSamplingOnBootCheckBox, enableSampCheckBox());
 		enableProgressBar(R.id.sampleValue, TIME, R.id.sampleProgressBar, enableSampleTimeProgressBar());
