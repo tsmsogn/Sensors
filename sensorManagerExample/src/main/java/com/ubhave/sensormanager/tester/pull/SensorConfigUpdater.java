@@ -36,6 +36,46 @@ public class SensorConfigUpdater extends ExampleSensorConfigUpdater
 		return parameter+"_"+getSensorName();
 	}
 
+	public void set()
+	{
+		setSensorSampleWindow(getSensorSampleWindow());
+		setSensorSleepWindow(getSensorSleepWindow());
+		setSamplingDelay(getSamplingDelay());
+		setLowPassAlpha(getLowPassAlpha());
+		setMovementThreshold(getMovementThreshold());
+		enableSensor(isSensorEnabled());
+		setSampleCycles(getSampleCycles());
+		setLocationAccuracy(getLocationAccuracy());
+		setSamplingRate(getSamplingRate());
+		setSoundThreshold(getSoundThreshold());
+		setTimeLimit(getTimeLimit());
+		setRowLimit(getRowLimit());
+		setTimeThreshold(getTimeThreshold());
+		setDistanceThreshold(getDistanceThreshold());
+	}
+	
+	@Override
+	public void reset()
+	{
+		super.reset();
+		
+		setSensorSampleWindow(super.getSensorSampleWindow());
+		setSensorSleepWindow(super.getSensorSleepWindow());
+		setSamplingDelay(super.getSamplingDelay());
+		setLowPassAlpha(super.getLowPassAlpha());
+		setMovementThreshold(super.getMovementThreshold());
+		enableSensor(super.isSensorEnabled());
+		setSampleCycles(super.getSampleCycles());
+		setLocationAccuracy(super.getLocationAccuracy());
+		setSamplingRate(super.getSamplingRate());
+		setSoundThreshold(super.getSoundThreshold());
+		setTimeLimit(super.getTimeLimit());
+		setRowLimit(super.getRowLimit());
+		setTimeThreshold(super.getTimeThreshold());
+		setDistanceThreshold(super.getDistanceThreshold());
+		startSensingOnBoot(false);
+	}
+
 	@Override
 	public void setSensorSampleWindow(long millis)
 	{

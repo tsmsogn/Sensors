@@ -24,12 +24,14 @@ package com.ubhave.sensormanager.tester.pull;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.ESSensorManager;
 import com.ubhave.sensormanager.ESSensorManagerInterface;
+import com.ubhave.sensormanager.config.SensorConfig;
 import com.ubhave.sensormanager.config.pull.BluetoothConfig;
 import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
 import com.ubhave.sensormanager.config.pull.LocationConfig;
 import com.ubhave.sensormanager.config.pull.MicrophoneConfig;
 import com.ubhave.sensormanager.config.pull.MotionSensorConfig;
 import com.ubhave.sensormanager.config.pull.PullSensorConfig;
+import com.ubhave.sensormanager.config.pull.StepCounterConfig;
 import com.ubhave.sensormanager.config.push.PassiveLocationConfig;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 import com.ubhave.sensormanager.tester.ApplicationContext;
@@ -49,6 +51,66 @@ public class ExampleSensorConfigUpdater
 		catch (ESException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	public void reset()
+	{
+		SensorConfig defaultConfig = SensorConfig.getDefaultConfig(sensorType);
+
+		switch (sensorType)
+		{
+		case SensorUtils.SENSOR_TYPE_ACCELEROMETER:
+		case SensorUtils.SENSOR_TYPE_GYROSCOPE:
+		case SensorUtils.SENSOR_TYPE_MAGNETIC_FIELD:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS));
+			setSamplingDelay((Integer) defaultConfig.getParameter(MotionSensorConfig.SAMPLING_DELAY));
+			setLowPassAlpha((Float) defaultConfig.getParameter(MotionSensorConfig.LOW_PASS_ALPHA));
+			setMovementThreshold((Integer) defaultConfig.getParameter(MotionSensorConfig.MOTION_THRESHOLD));
+			break;
+		case SensorUtils.SENSOR_TYPE_BLUETOOTH:
+			enableSensor((Boolean) defaultConfig.getParameter(BluetoothConfig.FORCE_ENABLE_SENSOR));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSampleCycles((Integer) defaultConfig.getParameter(PullSensorConfig.NUMBER_OF_SENSE_CYCLES));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS));
+			break;
+		case SensorUtils.SENSOR_TYPE_LOCATION:
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS));
+			setLocationAccuracy((String) defaultConfig.getParameter(LocationConfig.ACCURACY_TYPE));
+			break;
+		case SensorUtils.SENSOR_TYPE_MICROPHONE:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS));
+			setSamplingRate((Integer) defaultConfig.getParameter(MicrophoneConfig.SAMPLING_RATE));
+			setSoundThreshold((Integer) defaultConfig.getParameter(MicrophoneConfig.SOUND_THRESHOLD));
+			break;
+		case SensorUtils.SENSOR_TYPE_WIFI:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSampleCycles((Integer) defaultConfig.getParameter(PullSensorConfig.NUMBER_OF_SENSE_CYCLES));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_PER_CYCLE_MILLIS));
+			break;
+		case SensorUtils.SENSOR_TYPE_SMS_CONTENT_READER:
+		case SensorUtils.SENSOR_TYPE_CALL_CONTENT_READER:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSampleCycles((Integer) defaultConfig.getParameter(PullSensorConfig.NUMBER_OF_SENSE_CYCLES));
+			setTimeLimit((Long) defaultConfig.getParameter(ContentReaderConfig.TIME_LIMIT_MILLIS));
+			setRowLimit((Integer) defaultConfig.getParameter(ContentReaderConfig.ROW_LIMIT));
+			break;
+		case SensorUtils.SENSOR_TYPE_PHONE_RADIO:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSampleCycles((Integer) defaultConfig.getParameter(PullSensorConfig.NUMBER_OF_SENSE_CYCLES));
+			break;
+		case SensorUtils.SENSOR_TYPE_PASSIVE_LOCATION:
+			setTimeThreshold((Long) defaultConfig.getParameter(PassiveLocationConfig.MIN_TIME));
+			setDistanceThreshold((Float) defaultConfig.getParameter(PassiveLocationConfig.MIN_DISTANCE));
+			break;
+		case SensorUtils.SENSOR_TYPE_STEP_COUNTER:
+			setSensorSleepWindow((Long) defaultConfig.getParameter(PullSensorConfig.POST_SENSE_SLEEP_LENGTH_MILLIS));
+			setSensorSampleWindow((Long) defaultConfig.getParameter(PullSensorConfig.SENSE_WINDOW_LENGTH_MILLIS));
+			setSamplingDelay((Integer) defaultConfig.getParameter(StepCounterConfig.SAMPLING_DELAY));
+			break;
 		}
 	}
 
