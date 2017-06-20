@@ -61,7 +61,7 @@ public class UpdatePhoneRadioConfigActivity extends AbstractUpdateSensorConfigAc
 	protected boolean enableSampleCycleTimeProgressBar()
 	{
 
-		return false;
+		return true;
 	}
 
 	@Override
@@ -96,7 +96,7 @@ public class UpdatePhoneRadioConfigActivity extends AbstractUpdateSensorConfigAc
 	protected boolean enableSleepTimeProgressBar()
 	{
 
-		return false;
+		return true;
 	}
 
 	@Override

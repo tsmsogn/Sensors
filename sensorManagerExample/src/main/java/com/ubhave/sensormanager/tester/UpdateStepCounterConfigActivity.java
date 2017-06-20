@@ -89,20 +89,20 @@ public class UpdateStepCounterConfigActivity extends AbstractUpdateSensorConfigA
 	protected boolean enableMotionDelayRateSpinner()
 	{
 
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean enableSleepTimeProgressBar()
 	{
 
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean enableSampleTimeProgressBar()
 	{
 
-		return false;
+		return true;
 	}
 }
