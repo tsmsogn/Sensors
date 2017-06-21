@@ -8,8 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/sensorDataManager" />
-            <option value="$PROJECT_DIR$/sensorManager" />
             <option value="$PROJECT_DIR$/sensorManagerExample" />
           </set>
         </option>
